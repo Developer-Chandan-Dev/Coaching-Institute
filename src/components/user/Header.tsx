@@ -1,10 +1,8 @@
 'use client';
 import { useState } from 'react';
 import NavItem from './NavItem';
-import Image from 'next/image';
 import Link from 'next/link';
 import { AlignJustify, XIcon } from 'lucide-react';
-import CustomButton from './CustomButton';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
