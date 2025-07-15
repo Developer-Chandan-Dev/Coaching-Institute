@@ -7,6 +7,7 @@ import Testimonials from '@/components/user/Testimonials';
 import Contact from '@/components/user/Contact';
 import Footer from '@/components/user/Footer';
 import Header from '@/components/user/Header';
+import FreeDemo from "@/components/user/FreeDemo";
 
 const page = () => {
   
@@ -64,6 +65,7 @@ const page = () => {
       </section> */}
 
       <AvailableClasses />
+        <FreeDemo/>
 
       <section className=" px-10 py-10 md:px-5 w-full max-w-[1200px] mx-auto flex-center flex-col">
         <div className="text-center">

@@ -26,7 +26,7 @@ const Contact = () => {
       id="contact"
       className="text-gray-600 body-font overflow-hidden relative z-10 mt-20 rounded-3xl border border-neutral-200 bg-neutral-100 p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900 mb-20"
     >
-      <div className="container px-5 py-10 mx-auto">
+      <div className="container px-5 pb-10 pt-20 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <ContactForm />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">

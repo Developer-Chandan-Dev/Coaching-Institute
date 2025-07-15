@@ -18,12 +18,13 @@ const AvailableClasses = () => {
         duration: 0.3,
         delay: 1.2,
       }}
-      className="relative z-10 mt-20 rounded-3xl border border-neutral-200 bg-neutral-100 p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
+      id="courses"
+      className="relative z-10 pt-22 rounded-3xl border border-neutral-200 bg-neutral-100 p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
     >
         <div className="flex-center flex-col gap-3">
-          <p className="font-semibold ">Our Business</p>
+          <p className="font-semibold ">Our Courses</p>
           <h2 className="text-center pt-2 pb-4">
-            Business & Executive Coaching <br /> for Business Partnerships
+            Learning & Teaching Coaching <br /> for Improving Students Knowledge
           </h2>
           <div className="flex items-center justify-center flex-wrap">
             <CardHoverEffectDemo />

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import React from 'react';
 
 const navItems = [
-  { label: 'Home', name: '', href: '/' },
+  { label: 'Home', name: 'home', href: '#home' },
   { label: 'Courses', name: 'courses', href: '#courses' },
   { label: 'Free Demo', name: 'demo', href: '#demo' },
   { label: 'Testimonials', name: 'testimonials', href: '#testimonials' },
@@ -18,6 +18,7 @@ interface NavItemProps {
 
 const NavItem = ({ className = '' }: NavItemProps) => {
   const pathname = usePathname();
+  console.log(pathname, 21);
 
   const handleScroll = (id: string) => {
     const element = document.getElementById(id);

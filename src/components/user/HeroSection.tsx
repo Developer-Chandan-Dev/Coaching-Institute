@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const HeroSection = () => {
   return (
-    <>
+    <section id="home">
       <div className="absolute inset-y-0 left-0 h-full w-px bg-neutral-200/80 dark:bg-neutral-800/80">
         <div className="absolute top-0 h-40 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
       </div>
@@ -98,7 +98,7 @@ const HeroSection = () => {
           </div>
         </motion.div> */}
       </div>
-    </>
+    </section>
   );
 };
 

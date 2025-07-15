@@ -34,3 +34,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+[//]: # (Prompt for chat GPT)
+Hey Chat GPT I have problem I'm a laptop user in my laptop two os are running using dual boot os first windows1 and second is kali linux.
+before some time both was running perfectly but when I updated upgraded my kali linux os my kali linux was not working I fix that but this time my chrome browser and vscode is not opening like when I fire my vscode, vscode is goinng to crashed means so for second and hide in kali linux this problem is coming in kali linux os help me how to overcome this problem
