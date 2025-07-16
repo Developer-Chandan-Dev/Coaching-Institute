@@ -11,77 +11,46 @@ export default function DemoForm() {
   const [email, setEmail] = React.useState("");
   const [phone, setPhone] = React.useState("");
   const [address, setAddress] = React.useState("");
-  // const [submitting, setSubmitting] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
 
-  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   try {
-  //     console.log("Form submitted with:", {
-  //       studentName,
-  //       fatherName,
-  //       email,
-  //       phone,
-  //       address,
-  //     });
-  //     const res = await fetch(
-  //       `${process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL!}?sheet=DemoBooking`,
-  //       {
-  //         method: "POST",
-  //         body: JSON.stringify({
-  //           studentName,
-  //           fatherName,
-  //           email,
-  //           phone,
-  //           address,
-  //         }),
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-
-  //     const text = await res.text();
-  //     console.log(text);
-  //   } catch (error) {
-  //     console.error("Error submitting form:", error);
-  //   }
-  // };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // setSubmitting(true);
-    alert("Work is in Progress.");
-    // try {
-    //   const res = await fetch("/api/submit-form", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       studentName,
-    //       fatherName,
-    //       email,
-    //       phone,
-    //       address,
-    //     }),
-    //   });
+    setSubmitting(true);
+    
+    try {
+      const res = await fetch("/api/submit-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formType: "demo", // Specify the form type
+          studentName,
+          fatherName,
+          email,
+          phone,
+          address,
+        }),
+      });
 
-    //   const data = await res.json();
+      const data = await res.json();
 
-    //   if (res.ok) {
-    //     console.log(data.message);
-    //     // Reset form fields
-    //     setStudentName("");
-    //     setFatherName("");
-    //     setEmail("");
-    //     setPhone("");
-    //     setAddress("");
-    //   } else {
-    //     console.error("Error:", data.error);
-    //   }
-    //   setSubmitting(false);
-    // } catch (error) {
-    //   console.error("Error submitting form:", error);
-    // }
+      if (res.ok) {
+        console.log(data.message);
+        // Reset form fields
+        setStudentName("");
+        setFatherName("");
+        setEmail("");
+        setPhone("");
+        setAddress("");
+      } else {
+        console.error("Error:", data.error);
+      }
+      setSubmitting(false);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -157,8 +126,7 @@ export default function DemoForm() {
           className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]"
           type="submit"
         >
-          {/* {submitting ? "Submitting..." : "Send →"} */}
-          Send →
+          {submitting ? "Submitting..." : "Send →"}
           <BottomGradient />
         </button>
       </form>

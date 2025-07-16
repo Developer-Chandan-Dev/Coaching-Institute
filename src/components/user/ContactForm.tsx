@@ -1,14 +1,53 @@
-'use client';
-import React from 'react';
-import { Label } from '../ui/label';
-import { Input } from '../ui/input';
-import { cn } from '@/lib/utils';
-import { Textarea } from '../ui/textarea';
+"use client";
+import React from "react";
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
+import { cn } from "@/lib/utils";
+import { Textarea } from "../ui/textarea";
 
 export default function ContactForm() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [name, setName] = React.useState("");
+  const [phone, setPhone] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [message, setMessage] = React.useState("");
+  const [submitting, setSubmitting] = React.useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Form submitted');
+    setSubmitting(true);
+
+    try {
+      const res = await fetch("/api/submit-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formType: "contact", // Specify the form type
+          name,
+          phone,
+          email,
+          message,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        console.log(data.message);
+        // Reset form fields
+        setName("");
+        setPhone("");
+        setEmail("");
+        setMessage("");
+      } else {
+        console.error("Error:", data.error);
+      }
+      setSubmitting(false);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitting(false);
+    }
   };
   return (
     <div className="shadow-input mx-auto w-full max-w-md bg-white py-4 rounded-2xl p-4 md:p-8 dark:bg-black">
@@ -23,30 +62,56 @@ export default function ContactForm() {
         <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
           <LabelInputContainer>
             <Label htmlFor="fullname">Full name</Label>
-            <Input id="fullname" placeholder="John Doe" type="text" />
+            <Input
+              id="fullname"
+              placeholder="John Doe"
+              type="text"
+              value={name}
+              required
+              onChange={(e) => setName(e.target.value)}
+            />
           </LabelInputContainer>
           <LabelInputContainer>
             <Label htmlFor="phone">Phone no</Label>
-            <Input id="phone" placeholder="9876543210" type="text" />
+            <Input
+              id="phone"
+              placeholder="9876543210"
+              type="text"
+              value={phone}
+              required
+              onChange={(e) => setPhone(e.target.value)}
+            />
           </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
-          <Input id="email" placeholder="example@gmail.com" type="email" />
+          <Input
+            id="email"
+            placeholder="example@gmail.com"
+            type="email"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="message">Message</Label>
-          <Textarea id="message" placeholder="message..." />
+          <Textarea
+            id="message"
+            placeholder="message..."
+            value={message}
+            required
+            onChange={(e) => setMessage(e.target.value)}
+          />
         </LabelInputContainer>
 
         <button
           className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]"
           type="submit"
         >
-          Send &rarr;
+          {submitting ? "Submitting..." : "Send →"}
           <BottomGradient />
         </button>
-
       </form>
     </div>
   );
@@ -69,7 +134,7 @@ const LabelInputContainer = ({
   className?: string;
 }) => {
   return (
-    <div className={cn('flex w-full flex-col space-y-2', className)}>
+    <div className={cn("flex w-full flex-col space-y-2", className)}>
       {children}
     </div>
   );

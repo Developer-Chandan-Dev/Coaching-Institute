@@ -22,7 +22,7 @@ const FreeDemo = () => {
             className="text-gray-600 body-font overflow-hidden relative z-10 mt-20 rounded-3xl p-4 dark:bg-neutral-900 mb-20"
         >
             <div className="container px-5 pb-10 pt-20 mx-auto">
-                <div className="lg:w-11/12 mx-auto flex flex-wrap">
+                <div className="lg:w-11/12 mx-auto flex flex-wrap gap-4">
                     <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                         <h2 className="text-sm ml-1 title-font text-gray-500 tracking-widest">
                             G.B. TECH
