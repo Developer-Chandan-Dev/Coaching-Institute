@@ -107,6 +107,8 @@ export default function DemoForm() {
               type="text"
               required
               value={phone}
+              maxLength={10}
+              minLength={10}
               onChange={(e) => setPhone(e.target.value)}
             />
           </LabelInputContainer>

@@ -10,6 +10,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { formType, ...formData } = body;
+    console.log(formType, formData, 13);
 
     const SPREADSHEET_ID = process.env.GOOGLE_SHEET_ID;
 
@@ -42,8 +43,8 @@ export async function POST(req: NextRequest) {
         break;
 
       case "contact":
-        const { name, phone: contactPhone, email: contactEmail, address: contactAddress } = formData;
-        if (!name || !contactPhone || !contactEmail || !contactAddress) {
+        const { name, phone: contactPhone, email: contactEmail, message } = formData;
+        if (!name || !contactPhone || !contactEmail || !message) {
           return NextResponse.json({ error: "Missing required fields for contact form" }, { status: 400 });
         }
         SHEET_NAME = "ContactMessages";
@@ -52,7 +53,7 @@ export async function POST(req: NextRequest) {
             name,
             contactPhone,
             contactEmail,
-            contactAddress,
+            message,
             timestamp,
           ],
         ];

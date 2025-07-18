@@ -79,6 +79,8 @@ export default function ContactForm() {
               type="text"
               value={phone}
               required
+              minLength={10}
+              maxLength={10}
               onChange={(e) => setPhone(e.target.value)}
             />
           </LabelInputContainer>
